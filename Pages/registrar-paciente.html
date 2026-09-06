@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Caredent — Inicio</title>
+<title>Caredent — Registrar paciente</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="../css/styles.css" rel="stylesheet">
@@ -51,8 +51,8 @@
 <div>
 <header class="topbar">
 <div class="topbar__title">
-<span class="eyebrow">Panel principal</span>
-        Bienvenido/a de vuelta
+<span class="eyebrow">Gestión de pacientes</span>
+        Registrar paciente
       </div>
 <div class="topbar__right">
 <div class="user-pill">
@@ -65,80 +65,62 @@
 </div>
 </header>
 <main class="content">
-<div class="grid-cards">
-<div class="card">
-<div class="kpi__label">Pacientes registrados</div>
-<div class="kpi__value" id="kpiPacientes">—</div>
-<div class="kpi__sub">En la base de la clínica</div>
+<form class="form-card" id="formPaciente" novalidate="">
+<div class="form-section-title">Datos personales</div>
+<div class="form-grid">
+<div class="field">
+<label for="nombre">Nombre</label>
+<input id="nombre" required="" type="text"/>
+<div class="field-error">Ingresa el nombre del paciente.</div>
 </div>
-<div class="card">
-<div class="kpi__label">Controles pendientes</div>
-<div class="kpi__value" id="kpiControles">—</div>
-<div class="kpi__sub is-warn">Requieren agendar o confirmar</div>
+<div class="field">
+<label for="apellidos">Apellidos</label>
+<input id="apellidos" required="" type="text"/>
+<div class="field-error">Ingresa los apellidos del paciente.</div>
 </div>
-<div class="card">
-<div class="kpi__label">Tratamientos en curso</div>
-<div class="kpi__value" id="kpiTratamientos">—</div>
-<div class="kpi__sub">Activos actualmente</div>
+<div class="field">
+<label for="rut">RUT</label>
+<input data-pattern="rut" id="rut" placeholder="12.345.678-9" required="" type="text"/>
+<div class="field-error">Ingresa un RUT válido, formato 12.345.678-9.</div>
 </div>
-<div class="card">
-<div class="kpi__label">Próximo control</div>
-<div class="kpi__value" id="kpiProximo" style="font-size:20px">—</div>
-<div class="kpi__sub" id="kpiProximoSub">—</div>
+<div class="field">
+<label for="fechaNacimiento">Fecha de nacimiento</label>
+<input id="fechaNacimiento" required="" type="date"/>
+<div class="field-error">Selecciona la fecha de nacimiento.</div>
 </div>
+<div class="field">
+<label for="telefono">Teléfono</label>
+<input data-pattern="phone" id="telefono" placeholder="+56 9 1234 5678" required="" type="text"/>
+<div class="field-error">Ingresa un teléfono de contacto válido.</div>
 </div>
-<div class="two-col">
-<div>
-<div class="section-title">
-            Próximos controles
-            <a class="link" href="controles.html">Ver todos</a>
+<div class="field">
+<label for="correo">Correo electrónico</label>
+<input id="correo" placeholder="nombre@correo.cl" required="" type="email"/>
+<div class="field-error">Ingresa un correo electrónico válido.</div>
 </div>
-<div class="table-wrap">
-<table>
-<thead>
-<tr><th>Paciente</th><th>Fecha</th><th>Motivo</th><th>Estado</th></tr>
-</thead>
-<tbody id="tablaProximos"></tbody>
-</table>
-</div>
-</div>
-<div>
-<div class="section-title">Accesos rápidos</div>
-<div class="quick-links">
-<a class="quick-link" href="pacientes.html">
-<div class="quick-link__icon">
-<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c1.2-4 4-6 7-6s5.8 2 7 6"></path></svg>
-</div>
-<div>
-<div class="quick-link__title">Ver pacientes</div>
-<div class="quick-link__sub">Listado completo y búsqueda</div>
-</div>
-</a>
-<a class="quick-link" href="registrar-paciente.html">
-<div class="quick-link__icon">
-<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
-</div>
-<div>
-<div class="quick-link__title">Registrar paciente</div>
-<div class="quick-link__sub">Agregar un nuevo ingreso</div>
-</div>
-</a>
-<a class="quick-link" href="controles.html">
-<div class="quick-link__icon">
-<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="15" rx="2" width="16" x="4" y="5"></rect><path d="M8 3v4M16 3v4M4 10h16"></path></svg>
-</div>
-<div>
-<div class="quick-link__title">Controles pendientes</div>
-<div class="quick-link__sub">Agenda de seguimiento</div>
-</div>
-</a>
+<div class="field field--full">
+<label for="direccion">Dirección</label>
+<input id="direccion" placeholder="Calle, número, comuna" type="text"/>
+<div class="field-hint">Opcional — ayuda a contactar al paciente si es necesario.</div>
 </div>
 </div>
+<div class="form-section-title">Antecedentes básicos</div>
+<div class="form-grid">
+<div class="field field--full">
+<label for="motivoConsulta">Motivo de la primera consulta</label>
+<textarea id="motivoConsulta" placeholder="Ej: dolor en molar inferior derecho, control de rutina, etc." rows="3"></textarea>
+<div class="field-hint">Esta información se usará para crear la ficha clínica inicial.</div>
 </div>
+</div>
+<div class="form-actions">
+<a class="btn btn--ghost" href="pacientes.html">Cancelar</a>
+<button class="btn btn--primary" type="submit">Registrar paciente</button>
+</div>
+</form>
 </main>
 </div>
 </div>
 <script src="../js/app.js"></script>
-<script src="../js/dashboard.js"></script>
+<script src="../js/registrar-paciente.js"></script>
 </body>
 </html>

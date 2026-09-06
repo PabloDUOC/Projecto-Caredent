@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Caredent — Iniciar sesión</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet">
+</link></head>
+<body>
+<div class="login-screen">
+<aside class="login-side">
+<div class="brand">
+<img alt="" class="brand__mark" src="img/logo.svg" style="color:#F4FAF8"/>
+<span class="brand__word">Care<em>dent</em></span>
+</div>
+<div>
+<h1>Gestión y seguimiento clínico centrado en el paciente.</h1>
+<p>Proyecto académico inspirado en Caredent: ficha clínica, diagnósticos, tratamientos y evolución en un solo lugar.</p>
+</div>
+<div class="login-side__foot">Proyecto universitario · Solo frontend · Sin conexión a base de datos real</div>
+</aside>
+<main class="login-main">
+<div class="login-card">
+<h2>Iniciar sesión</h2>
+<p class="lead">Selecciona tu rol e ingresa tus credenciales de demostración.</p>
+<div class="role-select" id="roleSelect">
+<button class="role-chip is-active" data-role="administrador" type="button">Administrador</button>
+<button class="role-chip" data-role="recepcionista" type="button">Recepcionista</button>
+<button class="role-chip" data-role="profesional" type="button">Profesional</button>
+</div>
+<form id="loginForm" novalidate="">
+<div class="field">
+<label for="usuario">Usuario</label>
+<input autocomplete="username" id="usuario" name="usuario" required="" type="text"/>
+<div class="field-error">Ingresa tu usuario.</div>
+</div>
+<div class="field">
+<label for="clave">Contraseña</label>
+<input autocomplete="current-password" id="clave" name="clave" required="" type="password"/>
+<div class="field-error">Ingresa tu contraseña.</div>
+</div>
+<button class="btn btn--primary btn--block" type="submit">Iniciar sesión</button>
+<div class="login-msg" id="loginMsg"></div>
+</form>
+<div class="login-demo">
+        Credenciales de demostración según rol:<br/>
+        Administrador: <code>admin</code> / <code>admin123</code><br/>
+        Recepcionista: <code>recepcion</code> / <code>recepcion123</code><br/>
+        Profesional: <code>profesional</code> / <code>profesional123</code>
+</div>
+</div>
+</main>
+</div>
+<script src="js/app.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

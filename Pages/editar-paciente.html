@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Caredent — Modificar paciente</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="app">
+<nav class="sidebar">
+<div class="brand"><img alt="" class="brand__mark" src="../img/logo.svg"/><span class="brand__word">Care<em>dent</em></span></div>
+<div class="nav-group">
+<div class="nav-label">General</div>
+<a class="nav-link" data-nav="dashboard" href="dashboard.html">Inicio</a>
+<a class="nav-link" data-nav="pacientes" href="pacientes.html">Pacientes</a>
+<a class="nav-link" data-nav="controles" href="controles.html">Controles</a>
+<a class="nav-link" data-nav="usuarios" data-role="administrador" href="usuarios.html">Usuarios</a>
+</div>
+<div class="sidebar-foot"><div class="nav-group" style="margin-bottom:0">
+<a class="nav-link" data-nav="perfil" href="perfil.html">Mi perfil</a>
+<a class="nav-link" data-logout href="#">Cerrar sesión</a>
+</div></div>
+</nav>
+<div>
+<header class="topbar"><div class="topbar__title"><span class="eyebrow">Gestión de pacientes</span>Modificar paciente</div><div class="topbar__right"><div class="user-pill"><div class="avatar" data-user-avatar>—</div><div><div data-user-name style="font-weight:600">—</div><div class="text-muted" data-user-role style="font-size:11.5px">—</div></div></div></div></header>
+<main class="content">
+<div class="form-card">
+<form id="formEditarPaciente" novalidate>
+<div class="form-grid">
+<div class="field"><label for="nombre">Nombre</label><input id="nombre" required type="text"/><div class="field-error">Ingresa el nombre.</div></div>
+<div class="field"><label for="apellidos">Apellidos</label><input id="apellidos" required type="text"/><div class="field-error">Ingresa los apellidos.</div></div>
+<div class="field"><label for="rut">RUT</label><input id="rut" data-pattern="rut" required type="text"/><div class="field-error">Ingresa un RUT válido.</div></div>
+<div class="field"><label for="fechaNacimiento">Fecha de nacimiento</label><input id="fechaNacimiento" required type="date"/><div class="field-error">Ingresa la fecha.</div></div>
+<div class="field"><label for="telefono">Teléfono</label><input id="telefono" data-pattern="phone" required type="text"/><div class="field-error">Ingresa un teléfono válido.</div></div>
+<div class="field"><label for="correo">Correo</label><input id="correo" required type="email"/><div class="field-error">Ingresa un correo válido.</div></div>
+<div class="field"><label for="direccion">Dirección</label><input id="direccion" type="text"/></div>
+<div class="field"><label for="grupoSanguineo">Grupo sanguíneo</label><select id="grupoSanguineo"><option value="Por registrar">Por registrar</option><option>O+</option><option>O-</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option></select></div>
+<div class="field"><label for="alergias">Alergias</label><input id="alergias" type="text"/></div>
+<div class="field"><label for="antecedentesMedicos">Antecedentes médicos</label><input id="antecedentesMedicos" type="text"/></div>
+<div class="field"><label for="antecedentesOdonto">Antecedentes odontológicos</label><input id="antecedentesOdonto" type="text"/></div>
+<div class="field"><label for="estado">Estado</label><select id="estado"><option value="activo">Activo</option><option value="en-tratamiento">En tratamiento</option><option value="pendiente">Pendiente</option><option value="inactivo">Inactivo</option></select></div>
+</div>
+<div class="action-row" style="margin-top:20px"><a class="btn btn--ghost" id="cancelar" href="pacientes.html">Cancelar</a><button class="btn btn--primary" type="submit">Guardar cambios</button></div>
+<div class="login-msg" id="editMsg"></div>
+</form>
+</div>
+</main>
+</div></div>
+<script src="../js/app.js"></script>
+<script src="../js/editar-paciente.js"></script>
+</body></html>

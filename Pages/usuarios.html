@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Caredent — Usuarios</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="app"><nav class="sidebar">
+<div class="brand"><img alt="" class="brand__mark" src="../img/logo.svg"/><span class="brand__word">Care<em>dent</em></span></div>
+<div class="nav-group"><div class="nav-label">General</div>
+<a class="nav-link" data-nav="dashboard" href="dashboard.html">Inicio</a>
+<a class="nav-link" data-nav="pacientes" href="pacientes.html">Pacientes</a>
+<a class="nav-link" data-nav="controles" href="controles.html">Controles</a>
+<a class="nav-link" data-nav="usuarios" data-role="administrador" href="usuarios.html">Usuarios</a>
+</div><div class="sidebar-foot"><div class="nav-group" style="margin-bottom:0">
+<a class="nav-link" data-nav="perfil" href="perfil.html">Mi perfil</a><a class="nav-link" data-logout href="#">Cerrar sesión</a>
+</div></div></nav>
+<div><header class="topbar"><div class="topbar__title"><span class="eyebrow">Administración</span>Usuarios del sistema</div><div class="topbar__right"><div class="user-pill"><div class="avatar" data-user-avatar>—</div><div><div data-user-name style="font-weight:600">—</div><div class="text-muted" data-user-role style="font-size:11.5px">—</div></div></div></div></header>
+<main class="content">
+<div class="toolbar"><div class="search-box"><input id="buscadorUsuarios" placeholder="Buscar por nombre, usuario o rol…" type="text"/></div></div>
+<div class="form-card" style="margin-bottom:20px"><div class="section-title">Agregar médico o recepcionista</div>
+<form id="formUsuario" novalidate><div class="form-grid">
+<div class="field"><label for="nombreUsuario">Nombre</label><input id="nombreUsuario" required type="text"/><div class="field-error">Ingresa el nombre.</div></div>
+<div class="field"><label for="usuario">Usuario</label><input id="usuario" required type="text"/><div class="field-error">Ingresa el usuario.</div></div>
+<div class="field"><label for="clave">Contraseña</label><input id="clave" required type="password"/><div class="field-error">Ingresa la contraseña.</div></div>
+<div class="field"><label for="rol">Rol</label><select id="rol"><option value="profesional">Médico / Profesional</option><option value="recepcionista">Recepcionista</option></select></div>
+</div><button class="btn btn--primary" type="submit">Agregar usuario</button></form></div>
+<div class="table-wrap"><table><thead><tr><th>Nombre</th><th>Usuario</th><th>Rol</th><th>Acciones</th></tr></thead><tbody id="tablaUsuarios"></tbody></table></div>
+</main></div></div>
+<script src="../js/app.js"></script><script src="../js/usuarios.js"></script>
+</body></html>
