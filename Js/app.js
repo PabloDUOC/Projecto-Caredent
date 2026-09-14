@@ -13,6 +13,7 @@ const CAREDENT = (() => {
   const STORAGE_KEYS = {
     patients: "caredent_pacientes",
     users: "caredent_usuarios",
+    deletedUsers: "caredent_usuarios_papelera",
     session: "caredent_sesion",
   };
 
@@ -308,9 +309,51 @@ const CAREDENT = (() => {
     const session = getSession();
     if (session && String(session.userId) === String(id)) return false;
     const list = getUsers();
+    const usuario = list.find((u) => String(u.id) === String(id));
+    if (!usuario) return false;
     const next = list.filter((u) => String(u.id) !== String(id));
-    if (next.length === list.length) return false;
     saveUsers(next);
+    // Se guarda en un espacio temporal (papelera) en localStorage, por lo que
+    // el perfil sigue disponible aunque se cierre y se vuelva a abrir la pestaña.
+    const papelera = getDeletedUsers();
+    papelera.unshift({ ...usuario, eliminadoEl: new Date().toISOString() });
+    saveDeletedUsers(papelera);
+    return true;
+  }
+
+  function getDeletedUsers() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEYS.deletedUsers)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveDeletedUsers(list) {
+    localStorage.setItem(STORAGE_KEYS.deletedUsers, JSON.stringify(list));
+  }
+
+  function restoreUser(id) {
+    const papelera = getDeletedUsers();
+    const usuario = papelera.find((u) => String(u.id) === String(id));
+    if (!usuario) return false;
+    const { eliminadoEl, ...datosUsuario } = usuario;
+    const list = getUsers();
+    // Evita duplicar el nombre de usuario si ya fue tomado por otra cuenta nueva.
+    if (list.some((u) => u.usuario.toLowerCase() === datosUsuario.usuario.toLowerCase())) {
+      return false;
+    }
+    list.push(datosUsuario);
+    saveUsers(list);
+    saveDeletedUsers(papelera.filter((u) => String(u.id) !== String(id)));
+    return datosUsuario;
+  }
+
+  function permanentlyDeleteUser(id) {
+    const papelera = getDeletedUsers();
+    const next = papelera.filter((u) => String(u.id) !== String(id));
+    if (next.length === papelera.length) return false;
+    saveDeletedUsers(next);
     return true;
   }
 
@@ -540,6 +583,9 @@ const CAREDENT = (() => {
     saveUsers,
     addUser,
     deleteUser,
+    getDeletedUsers,
+    restoreUser,
+    permanentlyDeleteUser,
     requireRole,
     todayISO,
     formatDate,
