@@ -1,5 +1,6 @@
 const session = CAREDENT.requireRole(["administrador", "recepcionista", "profesional"]);
 if (session) {
+  CAREDENT.initLayout("pacientes");
   CAREDENT.initTabs();
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");

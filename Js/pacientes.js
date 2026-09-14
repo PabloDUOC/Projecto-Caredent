@@ -1,5 +1,6 @@
 const session = CAREDENT.requireRole(["administrador", "recepcionista", "profesional"]);
 if (session) {
+  CAREDENT.initLayout("pacientes");
   let pacientes = CAREDENT.getPatients();
   let filtroTexto = "";
   let filtroEstado = "todos";

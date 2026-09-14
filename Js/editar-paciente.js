@@ -1,5 +1,6 @@
 const session = CAREDENT.requireRole(["recepcionista", "profesional"]);
 if (session) {
+  CAREDENT.initLayout("pacientes");
   const id = new URLSearchParams(window.location.search).get("id");
   const paciente = CAREDENT.getPatientById(id);
   const form = document.getElementById("formEditarPaciente");
